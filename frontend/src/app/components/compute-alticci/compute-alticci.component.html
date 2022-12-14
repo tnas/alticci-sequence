@@ -1,0 +1,26 @@
+<section class="container criar-pensamentos ff-inter">
+  <form [formGroup]="alticciForm">
+    <label for="element">Alticci Element</label>
+    <input
+      type="textarea"
+      class="input"
+      id="element"
+      formControlName="element"
+      placeholder="Enter the nth Alticci element to be calculated"
+    />
+    <div class="error_message"
+      *ngIf="alticciForm.get('element')?.errors &&
+        alticciForm.get('element')?.touched">
+      A nth number is required!
+    </div>
+
+    <div *ngIf="computedElement">
+        The Alticci element at position <b>{{ alticciForm.get('element')?.value }}</b> of the sequence
+        is <b>{{ computedElement }}</b>.
+    </div>
+
+    <div class="acoes">
+      <button (click)="computeElement()" class="botao">Compute</button>
+    </div>
+  </form>
+</section>
