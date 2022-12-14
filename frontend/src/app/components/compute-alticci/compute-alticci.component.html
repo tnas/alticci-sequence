@@ -7,16 +7,35 @@
       id="element"
       formControlName="element"
       placeholder="Enter the nth Alticci element to be calculated"
+      (focus)="clearComputedElement()"
     />
     <div class="error_message"
-      *ngIf="alticciForm.get('element')?.errors &&
+      *ngIf="alticciForm.get('element')?.errors?.['required'] &&
         alticciForm.get('element')?.touched">
-      A nth number is required!
+      A number is required.
     </div>
 
-    <div *ngIf="computedElement">
-        The Alticci element at position <b>{{ alticciForm.get('element')?.value }}</b> of the sequence
-        is <b>{{ computedElement }}</b>.
+    <div class="error_message"
+      *ngIf="alticciForm.get('element')?.errors?.['min'] &&
+        alticciForm.get('element')?.touched">
+        The number must be greater than or equal to 0.
+    </div>
+
+    <div class="error_message"
+      *ngIf="alticciForm.get('element')?.errors?.['max'] &&
+        alticciForm.get('element')?.touched">
+        The number must be less than or equal to 1000.
+    </div>
+
+    <div class="error_message"
+      *ngIf="alticciForm.get('element')?.errors?.['pattern'] &&
+        alticciForm.get('element')?.touched">
+        Only numerical values are allowed.
+    </div>
+
+    <div *ngIf="showResult">
+        The Alticci element at position <b>{{ alticciForm.get('element')?.value }}</b>
+        of the sequence is <b>{{ computedElement }}</b>.
     </div>
 
     <div class="acoes">

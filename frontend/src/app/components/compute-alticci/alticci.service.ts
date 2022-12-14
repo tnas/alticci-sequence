@@ -12,7 +12,6 @@ export class AlticciService {
   constructor(private http: HttpClient) { }
 
   computeElement(n: number): Observable<number> {
-    console.log(n);
     return this.http.get<number>(`${this.API}/${n}`);
   }
 }

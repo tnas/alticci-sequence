@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlticciService } from './alticci.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class ComputeAlticciComponent {
 
   alticciForm!: FormGroup;
   computedElement!: number;
+  showResult: boolean = false;
 
   constructor(
     private service: AlticciService,
@@ -19,16 +20,25 @@ export class ComputeAlticciComponent {
 
   ngOnInit(): void {
     this.alticciForm = this.formBuilder.group({
-      element: ['']
+      element: ['', Validators.compose([
+        Validators.required, Validators.pattern('[0-9]+'),
+        Validators.min(0), Validators.max(1000)
+      ])]
   });
   }
 
-  computeElement() {
+  computeElement(): void {
 
     if (this.alticciForm.valid) {
-      console.log(this.alticciForm.value);
       this.service.computeElement(this.alticciForm.value['element']).subscribe(
-        (alticciNumber: number) => { this.computedElement = alticciNumber});
+        (alticciNumber: number) => {
+          this.computedElement = alticciNumber;
+          this.showResult = true;
+        });
     }
+  }
+
+  clearComputedElement(): void {
+    this.showResult = false;
   }
 }
