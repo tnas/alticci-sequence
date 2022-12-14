@@ -12,16 +12,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tnas.alticci.api.AlticciApi;
 import com.tnas.alticci.service.AlticciService;
 
 @RestController
 @RequestMapping("/alticci")
-public class AlticciController {
+public class AlticciController implements AlticciApi {
 	
 	@Autowired
 	private AlticciService service;
 
 	@GetMapping("/{n}")
+	@Override
 	public ResponseEntity<BigInteger> getElement(@PathVariable @NotNull @PositiveOrZero Integer n) {
 		return ResponseEntity.ok(this.service.computeElement(n));
 	}
