@@ -75,6 +75,7 @@ To **run the application locally**, execute both the front-end (SPA application)
 ### Restful API
 
 In the `backend` folder, run the command `mvn install` to build the application.
+Such a command also prepares the application for the containerization.
 
 In the `backend/target` folder, execute the command `java -jar alticci-0.0.1-SNAPSHOT.jar` to run the API on port `8080`.
 
@@ -82,14 +83,19 @@ In the `backend/target` folder, execute the command `java -jar alticci-0.0.1-SNA
 
 In the `frontend` folder, execute the command `ng serve --open` to run the application.
 
+To build the application in preparation for containerization, run the command
+`ng build --configuration=production`.
+
 ## Containerization
 
 A `Dockerfile` was created for each application part - back-end and front-end. A bash script has been prepared to facilitate the Docker image building and container creation. 
 
 Inside each application folder (`backend` and `frontend`), run the script through the `./docker_build_run.sh` command.
 
-**Note:** You must give execution permission to the bash script.
+**Note 1:** You must give execution permission to the bash script.
 For this, run the command `chmod +x docker_build_run.sh`.
+
+**Note 2:** The application build is not part of the Docker image building and container creation phases. It means that, **before run** `docker` or `docker-compose` commands, both applications must be built. In other words, the Restful API `.jar` file must be generated, as well as the SPA static files. 
 
 ### Docker Compose
 
