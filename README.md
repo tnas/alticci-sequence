@@ -1,7 +1,7 @@
 # Altice Labs Technical Exercise
 
 ## Table of contents
-* [Description](#description)
+* [Description - In Portuguese](#description)
 
 ## Description
 
