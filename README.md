@@ -109,7 +109,7 @@ folder run the command `docker-compose up`. Once both containers are running, ac
 
 ### Docker Hub
 
-The most simple way to have the application running on localhost is using the Docker images
+The simplest way to have the application running on localhost is using the Docker images
 available on the Docker Hub. Again, the Docker Compose can be used for this.
 
 In the `dockerhub` folder, just run the `docker-compose up` command.
