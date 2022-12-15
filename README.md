@@ -88,6 +88,10 @@ To build the application in preparation for containerization, run the command
 
 ## Containerization
 
+The application can be run in three ways.
+
+### Docker
+
 A `Dockerfile` was created for each application part - back-end and front-end. A bash script has been prepared to facilitate the Docker image building and container creation. 
 
 Inside each application folder (`backend` and `frontend`), run the script through the `./docker_build_run.sh` command.
@@ -103,6 +107,15 @@ Another way to run the application is using the `docker-compose.yml` file availa
 folder run the command `docker-compose up`. Once both containers are running, access the application via the URL
 [http://localhost:8000](http://localhost:8000).
 
+### Docker Hub
+
+The most simple way to have the application running on localhost is using the Docker images
+available on the Docker Hub. Again, the Docker Compose can be used for this.
+
+In the `dockerhub` folder, just run the `docker-compose up` command.
+
+**Note:** This way to run the application eliminates the need to build
+the back-end (`.jar`file) and the front-end (SPA static files) locally.
 
 ### API Documentation
 

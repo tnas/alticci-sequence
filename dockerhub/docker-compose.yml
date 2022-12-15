@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  
+  alticci_spa:
+    image: nascimenthiago/alticci-spa
+    container_name: alticci-spa
+    ports:
+      - 8000:80
+    depends_on:
+      - alticci_api
+
+  alticci_api:
+    image: nascimenthiago/alticci-api
+    container_name: alticci-api
+    ports:
+      - 8080:8080
