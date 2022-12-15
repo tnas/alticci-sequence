@@ -9,7 +9,7 @@ export class AlticciService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly API = 'http://localhost/api';
+  private readonly API = '/api';
 
   computeElement(n: number): Observable<number> {
     return this.http.get<number>(`${this.API}/${n}`);

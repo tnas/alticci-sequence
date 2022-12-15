@@ -12,6 +12,7 @@ export class ComputeAlticciComponent {
   alticciForm!: FormGroup;
   computedElement!: number;
   showResult: boolean = false;
+  backendError: boolean = false;
 
   constructor(
     private service: AlticciService,
@@ -30,15 +31,24 @@ export class ComputeAlticciComponent {
   computeElement(): void {
 
     if (this.alticciForm.valid) {
-      this.service.computeElement(this.alticciForm.value['element']).subscribe(
-        (alticciNumber: number) => {
+
+      this.service.computeElement(this.alticciForm.value['element']).subscribe({
+        next: (alticciNumber: number) => {
           this.computedElement = alticciNumber;
+          this.backendError = false;
           this.showResult = true;
-        });
+
+        },
+        error: (e) => {
+          console.log(e);
+          this.backendError = true;
+        }
+      });
     }
   }
 
   clearComputedElement(): void {
     this.showResult = false;
+    this.backendError = false;
   }
 }
