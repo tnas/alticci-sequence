@@ -10,10 +10,10 @@
 
 ## Description
 
-Deverá ser implementado um serviço REST utilizando uma framework JAVA1 que devolve um
+Deverá ser implementado um serviço REST utilizando uma framework JAVA que devolve um
 valor da sequência **Alticci**.
 
-Opcionalmente poderá ser implementado um GUI web simples em JavaScript2 para consultar o
+Opcionalmente poderá ser implementado um GUI web simples em JavaScript para consultar o
 serviço.
 
 A sequência Alticci - a(n) - é definida da seguinte forma:
