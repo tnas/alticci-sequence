@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class AlticciService {
 
-  private readonly API = ' /api';
-
   constructor(private http: HttpClient) { }
+
+  private readonly API = 'http://localhost/api';
 
   computeElement(n: number): Observable<number> {
     return this.http.get<number>(`${this.API}/${n}`);
